@@ -1,11 +1,4 @@
-/* Scripts del bundle, generado el 2026-08-09 16:48
-   No edites este archivo: edita Cerveceria.html y regeneralo con
-     python minificar.py Cerveceria.html -s cerveceria-minificado.html
-     python construir-hibrido.py
-*/
-/* Respaldo: si el HTML pegado en ShoWare todavia no trae esta
-   funcion, se define aqui para que los bloques de abajo no se caigan.
-   Si el HTML ya la trae, esta copia no se usa. */
+
 if (typeof window.pacoUrlPagina !== 'function') {
   window.pacoUrlPagina = function () {
     var u = (window.location.href || '').toLowerCase();
@@ -37,19 +30,14 @@ return u;};
  var host=(window.location.hostname||'').toLowerCase();
  if(host.indexOf('\x66estival\x70residente.\x74uboleta.com.do')===-1)return;
  var ruta=(window.location.pathname||'').replace(/\/+$/g,'').toLowerCase();
- var esRaiz=(ruta===''||ruta==='/default.asp'||ruta==='/index.asp');if(!esRaiz)return;window.location.replace(destino);})();
+ var esRaiz=(ruta===''||ruta==='/default.asp'||ruta==='/index.asp'||ruta==='/venuelisting.asp');if(!esRaiz)return;window.location.replace(destino);})();
 })();
 ;
 (function(){
 (function(){if(window.PACO_EN_FRAME)return;
  var faviconUrl="https://tuboleta.wocsoft.workers.dev/imagenes/favicon.png";
  var faviconFb="https://tuboleta.wocsoft.workers.dev/imagenes/favicon.png";
- /* El index.html se inyecta DENTRO del <body> de ShoWare y Chrome solo lee los
-    <link rel=icon> que son hijos directos de <head>; por eso el icono hay que
-    inyectarlo aqui. El guard exige "es nuestro Y esta en el head": si mirara
-    solo la URL, el <link> del body ya lo daria por puesto y el head quedaria
-    sin icono (favicon invisible). Comparar por ruta y no por CDN evita que el
-    intervalo lo borre y lo recree 2 veces por segundo. */
+
  function enforceFavicon(){
  var existingIcons=document.querySelectorAll("link[rel*='icon'], link[rel='shortcut icon']");var enHead=false;existingIcons.forEach(function(icon){
  if(icon.href&&icon.href.indexOf('/imagenes/favicon.png')!==-1){if(icon.parentNode===document.head)enHead=true;}else if(icon.parentNode){icon.parentNode.removeChild(icon);}
@@ -60,9 +48,7 @@ return u;};
  link.sizes='192x192';link.href=faviconUrl;if(document.head){document.head.appendChild(link);}
 });}
 }
- /* Failover de CDN: el onerror del <link rel=icon> NO dispara (el navegador ni
-    descarga los iconos del body), asi que se prueba la imagen del primario y,
-    si falla, se reapuntan los <link> al Worker de Cloudflare. Una sola vez. */
+
  function fbFavicon(){var probe=new Image();
  probe.onerror=function(){faviconUrl=faviconFb;
  document.querySelectorAll("link[rel*='icon'], link[rel='shortcut icon']").forEach(function(icon){icon.href=faviconFb;});};
